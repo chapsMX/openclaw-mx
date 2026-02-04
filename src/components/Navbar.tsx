@@ -14,15 +14,18 @@ export function Navbar() {
           <div className="w-10 h-10 bg-claw-green border-3 border-claw-black flex items-center justify-center">
             <span className="text-xl">🤖</span>
           </div>
-          <span className="font-bold text-xl tracking-tight">
-            <span className="text-claw-green">OPEN</span>CLAW
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-sm font-medium">Instalación</span>
+            <span className="font-bold text-lg tracking-tight">
+              <span className="text-claw-red">Open</span>Claw
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8 font-semibold text-sm uppercase tracking-wide">
           <Link href="#features" className="hover:text-claw-green transition">
-            Features
+            Características
           </Link>
           <Link href="#usecases" className="hover:text-claw-green transition">
             Casos de Uso
@@ -40,7 +43,7 @@ export function Navbar() {
           href="#plans"
           className="hidden md:block bg-claw-red text-white font-bold px-6 py-2 uppercase tracking-wide brutal-btn"
         >
-          Empezar
+          Contratar
         </Link>
 
         {/* Mobile Menu Button */}
@@ -77,23 +80,24 @@ export function Navbar() {
       {mobileMenuOpen && (
         <div className="md:hidden bg-claw-white border-t-3 border-claw-black">
           <div className="px-4 py-4 space-y-4 font-semibold uppercase">
-            <Link href="#features" className="block">
-              Features
+            <Link href="#features" className="block" onClick={() => setMobileMenuOpen(false)}>
+              Características
             </Link>
-            <Link href="#usecases" className="block">
+            <Link href="#usecases" className="block" onClick={() => setMobileMenuOpen(false)}>
               Casos de Uso
             </Link>
-            <Link href="/blog" className="block">
+            <Link href="/blog" className="block" onClick={() => setMobileMenuOpen(false)}>
               Blog
             </Link>
-            <Link href="#faq" className="block">
+            <Link href="#faq" className="block" onClick={() => setMobileMenuOpen(false)}>
               FAQ
             </Link>
             <Link
               href="#plans"
               className="block bg-claw-red text-white text-center py-2 brutal-btn"
+              onClick={() => setMobileMenuOpen(false)}
             >
-              Empezar
+              Contratar
             </Link>
           </div>
         </div>

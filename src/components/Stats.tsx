@@ -2,18 +2,18 @@ export function Stats() {
   const stats = [
     {
       icon: "🔴",
+      value: "50+",
+      label: "INTEGRACIONES",
+    },
+    {
+      icon: "🔷",
       value: "24/7",
       label: "DISPONIBILIDAD",
     },
     {
-      icon: "🔷",
-      value: "5 min",
-      label: "SETUP TIME",
-    },
-    {
       icon: "🔺",
-      value: "100%",
-      label: "TUS DATOS",
+      value: "∞",
+      label: "POSIBILIDADES",
     },
   ];
 

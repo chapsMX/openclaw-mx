@@ -95,26 +95,22 @@ export function Features() {
   };
 
   return (
-    <section id="features" className="py-20 bg-bg-light">
+    <section id="features" className="py-20 bg-claw-black">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-display text-4xl md:text-5xl text-claw-black mb-4">
-            FEATURES
+        <div className="text-center mb-12">
+          <h2 className="text-display text-4xl md:text-5xl text-white mb-4">
+            Open <span className="text-claw-red">Claw</span>
           </h2>
-          <div className="w-24 h-1 bg-claw-black mx-auto" />
-        </div>
-
-        {/* Integration badges */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {["WhatsApp", "Telegram", "Discord", "iMessage"].map((platform) => (
-            <div
-              key={platform}
-              className="bg-claw-white border-3 border-claw-black px-4 py-2 font-semibold"
-            >
-              {platform}
-            </div>
-          ))}
+          <p className="text-claw-red text-xl md:text-2xl font-semibold mb-4">
+            El Asistente Personal IA que realmente trabaja por ti!
+          </p>
+          <p className="text-white/70 max-w-2xl mx-auto">
+            Revisa y responde emails en tu nombre, administra tu calendario, te
+            notifica sobre lo importante, planea vuelos, etc. Todo desde
+            WhatsApp, Telegram o Discord.
+          </p>
+          <div className="w-24 h-1 bg-claw-green mx-auto mt-6" />
         </div>
 
         {/* Features Grid */}
