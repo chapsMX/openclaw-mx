@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -15,12 +21,13 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://openclaw.mx"),
   title: {
-    default: "OpenClaw.mx | Despliegue Automatizado de OpenClaw",
+    default: "OpenClaw.mx | Instalación de tu Asistente IA Personal",
     template: "%s | OpenClaw.mx",
   },
   description:
-    "Desplegamos y configuramos tu Asistente Virtual IA en 5 minutos. Self Hosted (Mac Mini) o Managed Hosting (VPS). Tu asistente personal 24/7.",
+    "Instalamos y configuramos tu Asistente Virtual IA en 5 minutos. Self Hosted (Mac Mini) o Managed Hosting (VPS). Disponible 24/7 en WhatsApp, Telegram y Discord.",
   keywords: [
     "OpenClaw",
     "asistente virtual",
@@ -29,6 +36,8 @@ export const metadata: Metadata = {
     "chatbot",
     "automatización",
     "México",
+    "WhatsApp bot",
+    "Telegram bot",
   ],
   authors: [{ name: "OpenClaw.mx" }],
   creator: "OpenClaw.mx",
@@ -37,9 +46,9 @@ export const metadata: Metadata = {
     locale: "es_MX",
     url: "https://openclaw.mx",
     siteName: "OpenClaw.mx",
-    title: "OpenClaw.mx | Despliegue Automatizado de OpenClaw",
+    title: "OpenClaw.mx | Tu Asistente IA Personal 24/7",
     description:
-      "Desplegamos y configuramos tu Asistente Virtual IA en 5 minutos. Tu asistente personal 24/7.",
+      "Instalamos y configuramos tu Asistente Virtual IA en 5 minutos. Disponible en WhatsApp, Telegram y Discord.",
     images: [
       {
         url: "/og-image.jpg",
@@ -51,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "OpenClaw.mx | Despliegue Automatizado de OpenClaw",
+    title: "OpenClaw.mx | Tu Asistente IA Personal 24/7",
     description:
-      "Desplegamos y configuramos tu Asistente Virtual IA en 5 minutos.",
+      "Instalamos y configuramos tu Asistente Virtual IA en 5 minutos.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -68,7 +77,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className="scroll-smooth">
       <head>
         {/* Google Tag Manager */}
         <script
@@ -82,7 +91,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} antialiased`}
+        className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-[family-name:var(--font-body)] antialiased`}
       >
         {/* Google Tag Manager (noscript) */}
         <noscript>
