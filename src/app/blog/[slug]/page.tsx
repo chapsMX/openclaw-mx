@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
@@ -45,7 +46,7 @@ export default async function PostPage({ params }: Props) {
   // Simple markdown-like parsing
   const parseContent = (content: string) => {
     const lines = content.trim().split("\n");
-    const elements: JSX.Element[] = [];
+    const elements: React.ReactElement[] = [];
     let inList = false;
     let listItems: string[] = [];
     let inTable = false;
