@@ -3,6 +3,7 @@ import Link from "next/link";
 export function Plans() {
   const plans = [
     {
+      id: "self-hosted",
       name: "Self Hosted",
       price: "2,500",
       currency: "MXN",
@@ -21,6 +22,7 @@ export function Plans() {
       popular: false,
     },
     {
+      id: "managed-admin",
       name: "Managed Hosting",
       subtitle: "Administrado",
       price: "2,500",
@@ -42,6 +44,7 @@ export function Plans() {
       popular: true,
     },
     {
+      id: "managed-vps",
       name: "Managed Hosting",
       subtitle: "VPS Propia",
       price: "2,500",
@@ -155,7 +158,7 @@ export function Plans() {
 
               {/* CTA Button */}
               <Link
-                href="#contact"
+                href={`/onboarding?plan=${plan.id}`}
                 className={`block w-full text-center font-bold py-4 uppercase tracking-wider text-sm border-3 border-claw-black transition-all duration-100 ${
                   plan.popular
                     ? "bg-claw-green text-claw-black hover:bg-claw-green-dark"
