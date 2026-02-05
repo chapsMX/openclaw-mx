@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { captureOrder } from '@/lib/paypal';
+import { sendAdminNotification, sendCustomerConfirmation } from '@/lib/email';
 import type { OnboardingData } from '@/lib/types';
 
 export async function POST(request: NextRequest) {
@@ -20,26 +21,16 @@ export async function POST(request: NextRequest) {
     const captureResult = await captureOrder(orderId);
 
     if (captureResult.status === 'COMPLETED') {
-      // TODO: Save successful payment to database
-      // await db.orders.update({
-      //   where: { orderId },
-      //   data: {
-      //     status: 'COMPLETED',
-      //     captureId: captureResult.purchase_units[0].payments.captures[0].id,
-      //     completedAt: new Date(),
-      //   },
-      // });
-
-      // TODO: Send confirmation email
-      // await sendEmail({
-      //   to: onboardingData.contact.email,
-      //   subject: '¡Bienvenido a OpenClaw!',
-      //   template: 'welcome',
-      //   data: onboardingData,
-      // });
-
-      // TODO: Create ticket/task for setup
-      // await createSetupTask(onboardingData);
+      // Send email notifications
+      try {
+        await Promise.all([
+          sendAdminNotification(onboardingData, orderId, 'order'),
+          sendCustomerConfirmation(onboardingData, orderId, 'order'),
+        ]);
+      } catch (emailError) {
+        console.error('Email sending failed:', emailError);
+        // Don't fail the payment if email fails
+      }
 
       console.log('Payment captured:', orderId, 'for:', onboardingData.contact.email);
 

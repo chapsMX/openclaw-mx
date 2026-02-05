@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPayPalAccessToken } from '@/lib/paypal';
+import { sendAdminNotification, sendCustomerConfirmation } from '@/lib/email';
 import type { OnboardingData } from '@/lib/types';
 
 const PAYPAL_API_BASE = process.env.PAYPAL_MODE === 'live' 
@@ -43,26 +44,16 @@ export async function POST(request: NextRequest) {
     const subscription = await getSubscriptionDetails(subscriptionId);
 
     if (subscription.status === 'ACTIVE' || subscription.status === 'APPROVED') {
-      // TODO: Save subscription to database
-      // await db.subscriptions.create({
-      //   subscriptionId,
-      //   planId: subscription.plan_id,
-      //   status: subscription.status,
-      //   onboardingData,
-      //   startTime: subscription.start_time,
-      //   createdAt: new Date(),
-      // });
-
-      // TODO: Send confirmation email
-      // await sendEmail({
-      //   to: onboardingData.contact.email,
-      //   subject: '¡Bienvenido a OpenClaw - Suscripción Activada!',
-      //   template: 'subscription-welcome',
-      //   data: { ...onboardingData, subscriptionId },
-      // });
-
-      // TODO: Create ticket/task for setup
-      // await createSetupTask(onboardingData);
+      // Send email notifications
+      try {
+        await Promise.all([
+          sendAdminNotification(onboardingData, subscriptionId, 'subscription'),
+          sendCustomerConfirmation(onboardingData, subscriptionId, 'subscription'),
+        ]);
+      } catch (emailError) {
+        console.error('Email sending failed:', emailError);
+        // Don't fail the subscription if email fails
+      }
 
       console.log('Subscription activated:', subscriptionId, 'for:', onboardingData.contact.email);
 
