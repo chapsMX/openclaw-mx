@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -23,11 +24,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://openclaw.mx"),
   title: {
-    default: "OpenClaw.mx | Instalación de tu Asistente IA Personal",
+    default: "Instalación de OpenClaw | Tu asistente virtual IA",
     template: "%s | OpenClaw.mx",
   },
   description:
-    "Instalamos y configuramos tu Asistente Virtual IA en 5 minutos. Self Hosted (Mac Mini) o Managed Hosting (VPS). Disponible 24/7 en WhatsApp, Telegram y Discord.",
+    "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
   keywords: [
     "OpenClaw",
     "asistente virtual",
@@ -36,8 +37,9 @@ export const metadata: Metadata = {
     "chatbot",
     "automatización",
     "México",
-    "WhatsApp bot",
-    "Telegram bot",
+    "instalación",
+    "VPS",
+    "Mac Mini",
   ],
   authors: [{ name: "OpenClaw.mx" }],
   creator: "OpenClaw.mx",
@@ -46,23 +48,23 @@ export const metadata: Metadata = {
     locale: "es_MX",
     url: "https://openclaw.mx",
     siteName: "OpenClaw.mx",
-    title: "OpenClaw.mx | Tu Asistente IA Personal 24/7",
+    title: "Instalación de OpenClaw | Tu asistente virtual IA",
     description:
-      "Instalamos y configuramos tu Asistente Virtual IA en 5 minutos. Disponible en WhatsApp, Telegram y Discord.",
+      "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "OpenClaw - Tu Asistente IA Personal",
+        alt: "Instalación de OpenClaw | Tu asistente virtual IA",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OpenClaw.mx | Tu Asistente IA Personal 24/7",
+    title: "Instalación de OpenClaw | Tu asistente virtual IA",
     description:
-      "Instalamos y configuramos tu Asistente Virtual IA en 5 minutos.",
+      "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -79,29 +81,61 @@ export default function RootLayout({
   return (
     <html lang="es" className="scroll-smooth">
       <head>
-        {/* Google Tag Manager */}
+        {/* Google tag (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QHR7TMZHER"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QHR7TMZHER');
+          `}
+        </Script>
+        
+        {/* Schema.org JSON-LD */}
         <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-TFB3F6ZV');`,
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebPage",
+                  "@id": "https://openclaw.mx/",
+                  "url": "https://openclaw.mx/",
+                  "name": "Instalación de OpenClaw | Tu asistente virtual IA",
+                  "isPartOf": {"@id": "https://openclaw.mx/#website"},
+                  "about": {"@id": "https://openclaw.mx/#organization"},
+                  "description": "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
+                  "inLanguage": "es-MX"
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://openclaw.mx/#website",
+                  "url": "https://openclaw.mx/",
+                  "name": "Instalación OpenClaw",
+                  "description": "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
+                  "publisher": {"@id": "https://openclaw.mx/#organization"},
+                  "inLanguage": "es-MX"
+                },
+                {
+                  "@type": "Organization",
+                  "@id": "https://openclaw.mx/#organization",
+                  "name": "OpenClaw.mx",
+                  "url": "https://openclaw.mx/",
+                  "description": "Servicio de instalación y configuración de asistentes virtuales OpenClaw en México"
+                }
+              ]
+            })
           }}
         />
       </head>
       <body
         className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} font-[family-name:var(--font-body)] antialiased`}
       >
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-TFB3F6ZV"
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
         {children}
       </body>
     </html>
