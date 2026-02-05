@@ -9,7 +9,7 @@ export function Hero() {
           <h1 className="text-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-claw-black leading-none">
             TU ASISTENTE PERSONAL IA
             <br />
-            DISPONIBLE 24/7
+            DISPONIBLE <span className="text-claw-red">24/7</span>
           </h1>
         </div>
 
@@ -17,7 +17,7 @@ export function Hero() {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           {/* Left Column - Text */}
           <div className="space-y-5">
-            <p className="text-claw-red font-mono text-base md:text-lg tracking-wider">
+            <p className="text-claw-red font-mono text-lg md:text-xl lg:text-2xl tracking-wider">
               // Instalación y configuración de OpenClaw
             </p>
             
