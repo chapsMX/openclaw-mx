@@ -2,14 +2,14 @@ import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="pt-20 bg-claw-green relative overflow-hidden min-h-screen flex flex-col justify-center">
-      <div className="max-w-7xl mx-auto px-4 py-12 lg:py-16">
+    <section className="pt-16 bg-claw-green relative overflow-hidden min-h-screen flex flex-col justify-center">
+      <div className="max-w-7xl mx-auto px-4 py-6 lg:py-8">
         {/* Main Title - Centered */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h1 className="text-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-claw-black leading-none">
             TU ASISTENTE PERSONAL IA
             <br />
-            <span className="text-claw-red">DISPONIBLE 24/7</span>
+            DISPONIBLE 24/7
           </h1>
         </div>
 

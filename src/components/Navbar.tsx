@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 export function Navbar() {
@@ -25,16 +26,14 @@ export function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="w-11 h-11 bg-claw-green border-3 border-claw-black flex items-center justify-center shadow-[3px_3px_0px_#0a0a0a] group-hover:shadow-[4px_4px_0px_#0a0a0a] group-hover:translate-x-[-1px] group-hover:translate-y-[-1px] transition-all">
-            <span className="text-xl">🤖</span>
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className="text-xs font-medium text-claw-black/60 tracking-wide">Instalación</span>
-            <span className="font-bold text-xl tracking-tight">
-              <span className="text-claw-red">Open</span>Claw
-            </span>
-          </div>
+        <Link href="/" className="flex items-center gap-2 group">
+          <Image
+            src="/openclaw_logo.png"
+            alt="OpenClaw"
+            width={180}
+            height={50}
+            className="h-10 w-auto"
+          />
         </Link>
 
         {/* Desktop Menu */}
