@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -227,6 +228,19 @@ export default async function PostPage({ params }: Props) {
           <div className="prose-brutal">{parseContent(post.content)}</div>
         </div>
       </article>
+
+      {/* Bot Image */}
+      <section className="py-12 bg-bg-cream border-t-3 border-claw-black">
+        <div className="max-w-md mx-auto px-4 text-center">
+          <Image
+            src="/openclaw_logo.png"
+            alt="OpenClaw - Tu asistente IA personal"
+            width={400}
+            height={400}
+            className="mx-auto"
+          />
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="py-16 bg-claw-green border-t-3 border-claw-black">

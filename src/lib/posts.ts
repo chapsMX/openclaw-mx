@@ -91,6 +91,108 @@ OpenClaw representa la siguiente evolución de los asistentes IA: de herramienta
 ¿Listo para conocer a tu nuevo asistente? Explora las opciones de instalación y empieza hoy.
     `,
   },
+  {
+    slug: "5-tareas-asistente-ia",
+    title: "5 tareas que tu asistente IA puede hacer por ti",
+    description: "Descubre las tareas cotidianas que un asistente IA personal puede automatizar para ahorrarte tiempo y esfuerzo todos los días.",
+    date: "5 de Febrero, 2026",
+    readTime: "4 min",
+    category: "PRODUCTIVIDAD",
+    content: `
+## Tu tiempo es valioso
+
+Todos los días hacemos decenas de pequeñas tareas que consumen tiempo: revisar el correo, checar el clima, anotar pendientes, investigar opciones antes de tomar una decisión. Individualmente parecen insignificantes, pero sumadas representan horas de tu semana.
+
+¿Y si alguien más pudiera encargarse de esas tareas por ti?
+
+Un asistente IA personal como OpenClaw puede hacerlo. No es ciencia ficción — es tecnología disponible hoy. Aquí te comparto **5 tareas concretas** que tu asistente puede hacer mientras tú te enfocas en lo importante.
+
+## 1. 📅 Agenda, recordatorios y briefing matutino
+
+Imagina despertar y recibir un mensaje con todo lo que necesitas saber para empezar el día:
+
+- **El clima:** Temperatura actual, pronóstico, y si necesitas paraguas
+- **Tu agenda:** Las reuniones y compromisos del día
+- **Recordatorios importantes:** Ese pendiente que no puedes olvidar
+
+Pero va más allá de solo informarte. Tu asistente puede:
+
+- Crear recordatorios con lenguaje natural: *"Recuérdame llamar al dentista mañana a las 3"*
+- Funcionar como alarma inteligente que insiste hasta que respondas
+- Avisarte con anticipación antes de cada compromiso
+
+Ya no dependes de tu memoria ni de revisar múltiples apps. Tu asistente consolida todo y te lo entrega cuando lo necesitas.
+
+## 2. 📧 Triaje de emails
+
+El email es una fuente constante de distracción. Entre newsletters, notificaciones, spam y mensajes realmente importantes, es fácil perderse.
+
+Tu asistente IA puede:
+
+- **Revisar tu bandeja** y darte un resumen de lo urgente
+- **Categorizar mensajes** por prioridad e importancia
+- **Alertarte inmediatamente** cuando llega algo que requiere acción
+- **Filtrar el ruido** para que solo veas lo que importa
+
+En lugar de revisar tu email 20 veces al día, recibes un resumen a la hora que prefieras. Si algo es urgente, te avisa al momento.
+
+## 3. 🔍 Research bajo demanda
+
+¿Cuántas veces al día necesitas investigar algo? Comparar precios, buscar información, entender un tema nuevo.
+
+Con un asistente IA, solo tienes que pedirlo:
+
+- *"Investiga las mejores opciones de vuelos a Londres en abril"*
+- *"¿Cuáles son los mejores restaurantes italianos cerca de Polanco?"*
+- *"Dame un resumen de las noticias de tecnología de esta semana"*
+- *"Compara estos tres productos y dime cuál conviene más"*
+
+Tu asistente busca, procesa la información, y te entrega un resumen claro. Sin tener que abrir 15 pestañas ni perderte en rabbit holes de internet.
+
+## 4. 📝 Captura de ideas y notas
+
+Las mejores ideas llegan en los peores momentos: manejando, en la regadera, a punto de dormir. Si no las capturas, se pierden.
+
+Tu asistente funciona como un **segundo cerebro** siempre disponible:
+
+- *"Anota: idea para el proyecto de marketing — hacer video de testimoniales"*
+- *"Agrega a mi lista de películas: The Brutalist"*
+- *"Guarda este link para leer después"*
+
+Todo queda guardado y organizado. Después puedes buscar con lenguaje natural: *"¿Qué ideas anoté la semana pasada sobre el proyecto?"*
+
+Ya no necesitas abrir apps, escribir en notas, o confiar en tu memoria. Solo dices lo que quieres guardar y listo.
+
+## 5. 📱 Automatización de redes sociales
+
+Mantener presencia en redes sociales consume tiempo. Pensar qué publicar, encontrar el momento adecuado, estar pendiente de cada plataforma.
+
+Tu asistente puede ayudarte a:
+
+- **Publicar en Twitter/X** directamente desde la conversación
+- **Postear en Farcaster** sin abrir la app
+- **Programar contenido** para publicarse automáticamente
+- **Sugerirte ideas** basadas en temas que te interesan
+
+Le dices *"Publica en Twitter: Acabo de terminar de leer [libro], muy recomendado"* y listo. Sin cambiar de contexto, sin interrumpir lo que estabas haciendo.
+
+## El verdadero poder: la combinación
+
+Cada una de estas tareas por separado ahorra minutos. Pero cuando tu asistente las hace todas, **recuperas horas de tu semana**.
+
+Y lo mejor: entre más lo usas, mejor te conoce. Aprende tus preferencias, tu estilo, tus horarios. Se vuelve más útil con el tiempo.
+
+## ¿Cómo empezar?
+
+OpenClaw es un asistente IA de código abierto que puedes instalar en tu propia infraestructura. Corre 24/7, se conecta a WhatsApp o Telegram, y empieza a trabajar para ti desde el día uno.
+
+En **OpenClaw México** nos encargamos de toda la instalación y configuración. Tú solo eliges el plan que mejor se adapte a tus necesidades y empiezas a delegar.
+
+> "No se trata de reemplazar lo que haces, sino de liberar tu tiempo para lo que realmente importa."
+
+¿Listo para tener tu propio asistente IA? 👇
+    `,
+  },
 ];
 
 export function getPostBySlug(slug: string): Post | undefined {
