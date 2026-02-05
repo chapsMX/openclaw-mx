@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { captureOrder } from '@/lib/paypal';
 import { sendAdminNotification, sendCustomerConfirmation } from '@/lib/email';
+import { saveOrder, decrementInventory } from '@/lib/supabase';
 import type { OnboardingData } from '@/lib/types';
+import { PLAN_PRICING } from '@/lib/types';
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,6 +23,37 @@ export async function POST(request: NextRequest) {
     const captureResult = await captureOrder(orderId);
 
     if (captureResult.status === 'COMPLETED') {
+      const pricing = PLAN_PRICING[onboardingData.plan];
+
+      // Save to database
+      try {
+        await saveOrder({
+          payment_id: orderId,
+          payment_type: 'order',
+          status: 'completed',
+          amount: pricing.setupFee,
+          plan: onboardingData.plan,
+          contact_name: onboardingData.contact.name,
+          contact_email: onboardingData.contact.email,
+          contact_phone: onboardingData.contact.phone,
+          contact_company: onboardingData.contact.company,
+          assistant_name: onboardingData.assistant.assistantName,
+          assistant_personality: onboardingData.assistant.personality,
+          assistant_language: onboardingData.assistant.language,
+          integration: onboardingData.integration.type,
+          model: onboardingData.model.model,
+          skills: onboardingData.skills.selectedSkills,
+        });
+
+        // Decrement inventory for self-hosted plan
+        if (onboardingData.plan === 'self-hosted') {
+          await decrementInventory('self-hosted');
+        }
+      } catch (dbError) {
+        console.error('Database save failed:', dbError);
+        // Don't fail the payment if DB fails
+      }
+
       // Send email notifications
       try {
         await Promise.all([

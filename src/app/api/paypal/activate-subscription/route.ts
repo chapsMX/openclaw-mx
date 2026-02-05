@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getPayPalAccessToken } from '@/lib/paypal';
 import { sendAdminNotification, sendCustomerConfirmation } from '@/lib/email';
+import { saveOrder } from '@/lib/supabase';
 import type { OnboardingData } from '@/lib/types';
+import { PLAN_PRICING } from '@/lib/types';
 
 const PAYPAL_API_BASE = process.env.PAYPAL_MODE === 'live' 
   ? 'https://api-m.paypal.com'
@@ -44,6 +46,32 @@ export async function POST(request: NextRequest) {
     const subscription = await getSubscriptionDetails(subscriptionId);
 
     if (subscription.status === 'ACTIVE' || subscription.status === 'APPROVED') {
+      const pricing = PLAN_PRICING[onboardingData.plan];
+
+      // Save to database
+      try {
+        await saveOrder({
+          payment_id: subscriptionId,
+          payment_type: 'subscription',
+          status: 'active',
+          amount: pricing.setupFee + (pricing.monthlyFee || 0),
+          plan: onboardingData.plan,
+          contact_name: onboardingData.contact.name,
+          contact_email: onboardingData.contact.email,
+          contact_phone: onboardingData.contact.phone,
+          contact_company: onboardingData.contact.company,
+          assistant_name: onboardingData.assistant.assistantName,
+          assistant_personality: onboardingData.assistant.personality,
+          assistant_language: onboardingData.assistant.language,
+          integration: onboardingData.integration.type,
+          model: onboardingData.model.model,
+          skills: onboardingData.skills.selectedSkills,
+        });
+      } catch (dbError) {
+        console.error('Database save failed:', dbError);
+        // Don't fail the subscription if DB fails
+      }
+
       // Send email notifications
       try {
         await Promise.all([
