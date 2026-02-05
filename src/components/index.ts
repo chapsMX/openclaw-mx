@@ -3,6 +3,8 @@ export { Hero } from "./Hero";
 export { Stats } from "./Stats";
 export { Plans } from "./Plans";
 export { Features } from "./Features";
+export { Video } from "./Video";
 export { UseCases } from "./UseCases";
 export { FAQ } from "./FAQ";
+export { FinalLogo } from "./FinalLogo";
 export { Footer } from "./Footer";
