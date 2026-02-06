@@ -40,7 +40,7 @@ export function Hero() {
                 href="#plans"
                 className="bg-claw-red text-white font-bold px-8 py-4 text-base uppercase tracking-wider brutal-btn text-center hover:bg-claw-red-dark"
               >
-                Ver Planes
+                Contratar
               </Link>
               <Link
                 href="#features"
