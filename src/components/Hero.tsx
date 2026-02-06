@@ -18,7 +18,7 @@ export function Hero() {
           {/* Left Column - Text */}
           <div className="space-y-5">
             <p className="text-claw-red font-mono text-lg md:text-xl lg:text-2xl tracking-wider">
-              >> Instalación y configuración de OpenClaw.
+              // Instalación y configuración de OpenClaw.
             </p>
             
             <div className="space-y-4 text-claw-black/85 text-lg leading-relaxed">
