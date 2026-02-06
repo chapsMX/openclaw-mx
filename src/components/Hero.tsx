@@ -18,13 +18,12 @@ export function Hero() {
           {/* Left Column - Text */}
           <div className="space-y-5">
             <p className="text-claw-red font-mono text-lg md:text-xl lg:text-2xl tracking-wider">
-              // Instalación y configuración de OpenClaw
+              >> Instalación y configuración de OpenClaw.
             </p>
             
             <div className="space-y-4 text-claw-black/85 text-lg leading-relaxed">
               <p>
-                Instalamos y configuramos tu asistente virtual OpenClaw en 5 minutos en un
-                ambiente personalizado.
+                Nos encargamos de la instalación y configuración personalizada de OpenClaw, el agente autónomo, en un ambiente personalizado y de acuerdo a tus necesidades.
               </p>
               <p>
                 Ofrecemos 2 opciones de Instalación:{" "}
