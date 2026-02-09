@@ -43,6 +43,7 @@ export interface OnboardingData {
 
 export interface PlanPricing {
   setupFee: number;
+  hardwareFee: number | null;
   monthlyFee: number | null;
   isSubscription: boolean;
 }
@@ -50,16 +51,19 @@ export interface PlanPricing {
 export const PLAN_PRICING: Record<PlanType, PlanPricing> = {
   'self-hosted': {
     setupFee: 2500,
+    hardwareFee: 16000, // Mac Mini
     monthlyFee: null,
     isSubscription: false,
   },
   'managed-admin': {
     setupFee: 2500,
+    hardwareFee: null,
     monthlyFee: 300,
     isSubscription: true,
   },
   'managed-vps': {
     setupFee: 2500,
+    hardwareFee: null,
     monthlyFee: null,
     isSubscription: false,
   },

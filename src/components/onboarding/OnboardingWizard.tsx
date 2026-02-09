@@ -45,6 +45,7 @@ export function OnboardingWizard({ plan }: OnboardingWizardProps) {
   });
 
   const pricing = PLAN_PRICING[plan];
+  const totalSetup = pricing.setupFee + (pricing.hardwareFee || 0);
 
   const updateData = <K extends keyof OnboardingData>(
     key: K, 
@@ -68,17 +69,17 @@ export function OnboardingWizard({ plan }: OnboardingWizardProps) {
       intent: pricing.isSubscription ? 'subscription' : 'capture',
       vault: pricing.isSubscription,
     }}>
-      <div className="min-h-screen bg-bg-cream py-12">
+      <div className="min-h-screen bg-bg-primary py-12">
         <div className="max-w-4xl mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-10">
-            <p className="text-claw-red font-mono text-sm tracking-wider mb-2">
+            <p className="text-accent-secondary font-mono text-sm tracking-wider mb-2">
               // CONFIGURACIÓN
             </p>
-            <h1 className="text-display text-3xl md:text-4xl text-claw-black mb-2">
+            <h1 className="text-display text-3xl md:text-4xl text-text-primary mb-2">
               {PLAN_NAMES[plan]}
             </h1>
-            <p className="text-claw-black/60">
+            <p className="text-text-secondary">
               Configura tu asistente en pocos pasos
             </p>
           </div>
@@ -87,9 +88,9 @@ export function OnboardingWizard({ plan }: OnboardingWizardProps) {
           <div className="mb-10">
             <div className="flex justify-between items-center relative">
               {/* Progress Line */}
-              <div className="absolute top-5 left-0 right-0 h-0.5 bg-claw-black/10" />
+              <div className="absolute top-5 left-0 right-0 h-0.5 bg-border" />
               <div 
-                className="absolute top-5 left-0 h-0.5 bg-claw-green transition-all duration-300"
+                className="absolute top-5 left-0 h-0.5 bg-accent-primary transition-all duration-300"
                 style={{ width: `${((currentStep - 1) / (STEPS.length - 1)) * 100}%` }}
               />
               
@@ -101,16 +102,16 @@ export function OnboardingWizard({ plan }: OnboardingWizardProps) {
                   <div 
                     className={`w-10 h-10 rounded-full flex items-center justify-center text-lg border-2 transition-all ${
                       step.id < currentStep 
-                        ? 'bg-claw-green border-claw-green text-claw-black' 
+                        ? 'bg-accent-primary border-accent-primary text-cta-text' 
                         : step.id === currentStep
-                          ? 'bg-claw-black border-claw-black text-white'
-                          : 'bg-white border-claw-black/20 text-claw-black/40'
+                          ? 'bg-bg-surface border-accent-secondary text-text-primary'
+                          : 'bg-bg-surface border-border text-text-muted'
                     }`}
                   >
                     {step.id < currentStep ? '✓' : step.icon}
                   </div>
                   <span className={`text-xs mt-2 font-medium ${
-                    step.id <= currentStep ? 'text-claw-black' : 'text-claw-black/40'
+                    step.id <= currentStep ? 'text-text-primary' : 'text-text-muted'
                   }`}>
                     {step.name}
                   </span>
@@ -120,10 +121,7 @@ export function OnboardingWizard({ plan }: OnboardingWizardProps) {
           </div>
 
           {/* Step Content */}
-          <div 
-            className="bg-white border-3 border-claw-black p-8 md:p-10"
-            style={{ boxShadow: '6px 6px 0px #0a0a0a' }}
-          >
+          <div className="bg-bg-surface border border-border rounded-xl p-8 md:p-10 shadow-lg">
             {currentStep === 1 && (
               <StepContact 
                 data={data.contact} 
@@ -173,11 +171,13 @@ export function OnboardingWizard({ plan }: OnboardingWizardProps) {
           </div>
 
           {/* Pricing Summary */}
-          <div className="mt-6 text-center text-sm text-claw-black/60">
+          <div className="mt-6 text-center text-sm text-text-secondary">
             <span className="font-mono">
-              {pricing.isSubscription 
-                ? `$${pricing.setupFee.toLocaleString()} MXN instalación + $${pricing.monthlyFee?.toLocaleString()} MXN/mes`
-                : `$${pricing.setupFee.toLocaleString()} MXN pago único`
+              {pricing.hardwareFee 
+                ? `$${pricing.setupFee.toLocaleString()} instalación + $${pricing.hardwareFee.toLocaleString()} Mac Mini = $${totalSetup.toLocaleString()} MXN`
+                : pricing.isSubscription 
+                  ? `$${pricing.setupFee.toLocaleString()} MXN instalación + $${pricing.monthlyFee?.toLocaleString()} MXN/mes`
+                  : `$${pricing.setupFee.toLocaleString()} MXN pago único`
               }
             </span>
           </div>

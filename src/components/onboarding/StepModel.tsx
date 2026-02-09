@@ -19,10 +19,10 @@ export function StepModel({ data, onChange, onNext, onBack }: StepModelProps) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-8">
-        <h2 className="text-display text-2xl text-claw-black mb-2">
+        <h2 className="text-display text-2xl text-text-primary mb-2">
           Modelo de IA
         </h2>
-        <p className="text-claw-black/60">
+        <p className="text-text-secondary">
           Elige el cerebro de tu asistente
         </p>
       </div>
@@ -33,35 +33,35 @@ export function StepModel({ data, onChange, onNext, onBack }: StepModelProps) {
             key={model.id}
             type="button"
             onClick={() => onChange({ model: model.id })}
-            className={`w-full p-5 border-2 text-left transition-all ${
+            className={`w-full p-5 border rounded-lg text-left transition-all ${
               data.model === model.id
-                ? 'border-claw-green bg-claw-green/10'
-                : 'border-claw-black/20 hover:border-claw-black/40'
+                ? 'border-accent-primary bg-accent-primary/10'
+                : 'border-border hover:border-accent-secondary bg-bg-primary'
             }`}
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <div className="flex items-center gap-3">
-                  <span className="font-bold text-claw-black text-lg">
+                  <span className="font-bold text-text-primary text-lg">
                     {model.name}
                   </span>
                   {model.recommended && (
-                    <span className="text-xs bg-claw-green text-claw-black px-2 py-0.5 font-bold uppercase">
+                    <span className="text-xs bg-accent-primary text-cta-text px-2 py-0.5 font-bold uppercase rounded">
                       Recomendado
                     </span>
                   )}
                 </div>
-                <p className="text-sm text-claw-black/60 mt-1">
+                <p className="text-sm text-text-secondary mt-1">
                   {model.description}
                 </p>
               </div>
               <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 ml-4 ${
                 data.model === model.id
-                  ? 'border-claw-green bg-claw-green'
-                  : 'border-claw-black/30'
+                  ? 'border-accent-primary bg-accent-primary'
+                  : 'border-border'
               }`}>
                 {data.model === model.id && (
-                  <span className="text-white text-sm">✓</span>
+                  <span className="text-cta-text text-sm">✓</span>
                 )}
               </div>
             </div>
@@ -69,9 +69,9 @@ export function StepModel({ data, onChange, onNext, onBack }: StepModelProps) {
         ))}
       </div>
 
-      <div className="mt-6 p-4 bg-claw-black/5 border-l-4 border-claw-purple">
-        <p className="text-sm text-claw-black/70">
-          <strong>💡 Tip:</strong> Puedes cambiar el modelo en cualquier momento 
+      <div className="mt-6 p-4 bg-bg-primary border-l-4 border-accent-secondary rounded-r-lg">
+        <p className="text-sm text-text-secondary">
+          <strong className="text-text-primary">💡 Tip:</strong> Puedes cambiar el modelo en cualquier momento 
           desde la configuración de tu asistente. El costo del modelo de IA 
           es adicional según tu uso.
         </p>
@@ -82,14 +82,13 @@ export function StepModel({ data, onChange, onNext, onBack }: StepModelProps) {
         <button
           type="button"
           onClick={onBack}
-          className="px-6 py-3 text-claw-black font-bold uppercase tracking-wider text-sm border-2 border-claw-black/20 hover:border-claw-black hover:bg-claw-black/5 transition-all"
+          className="px-6 py-3 text-text-primary font-bold uppercase tracking-wider text-sm border border-border rounded-lg hover:border-accent-secondary hover:bg-bg-surface-hover transition-all"
         >
           ← Atrás
         </button>
         <button
           type="submit"
-          className="px-8 py-3 bg-claw-black text-white font-bold uppercase tracking-wider text-sm border-2 border-claw-black hover:bg-claw-green hover:text-claw-black transition-colors"
-          style={{ boxShadow: '4px 4px 0px #0a0a0a' }}
+          className="px-8 py-3 bg-cta-bg text-cta-text font-bold uppercase tracking-wider text-sm rounded-lg hover:bg-cta-bg-hover transition-colors shadow-lg"
         >
           Siguiente →
         </button>

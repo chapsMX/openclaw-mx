@@ -29,6 +29,10 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
     .map(id => AVAILABLE_SKILLS.find(s => s.id === id)?.name)
     .filter(Boolean);
 
+  // Calculate totals
+  const totalSetup = pricing.setupFee + (pricing.hardwareFee || 0);
+  const totalToday = totalSetup + (pricing.isSubscription ? (pricing.monthlyFee || 0) : 0);
+
   // For one-time payments (self-hosted and managed-vps)
   const handleCreateOrder = async (_data: Record<string, unknown>, _actions: CreateOrderActions): Promise<string> => {
     try {
@@ -37,7 +41,7 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           plan: data.plan,
-          amount: pricing.setupFee.toString(),
+          amount: totalSetup.toString(),
           onboardingData: data,
         }),
       });
@@ -85,7 +89,6 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
   // For subscriptions (managed-admin)
   const handleCreateSubscription = async (_data: Record<string, unknown>, actions: CreateSubscriptionActions): Promise<string> => {
     try {
-      // First, get or create the plan
       const response = await fetch('/api/paypal/create-subscription', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -100,7 +103,6 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
         throw new Error(result.error || 'Error al crear la suscripción');
       }
 
-      // Use the plan ID from our backend
       return actions.subscription.create({
         plan_id: result.planId,
       });
@@ -118,7 +120,6 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
         throw new Error('No subscription ID received');
       }
 
-      // Save subscription info
       const response = await fetch('/api/paypal/activate-subscription', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -134,7 +135,6 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
         throw new Error(result.error || 'Error al activar la suscripción');
       }
 
-      // Redirect to success page
       window.location.href = `/onboarding/success?subscriptionId=${subscriptionID}`;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al activar la suscripción');
@@ -146,80 +146,93 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
   return (
     <div>
       <div className="mb-8">
-        <h2 className="text-display text-2xl text-claw-black mb-2">
+        <h2 className="text-display text-2xl text-text-primary mb-2">
           Resumen y Pago
         </h2>
-        <p className="text-claw-black/60">
+        <p className="text-text-secondary">
           Revisa tu configuración y completa el pago
         </p>
       </div>
 
       {/* Order Summary */}
-      <div className="bg-claw-black/5 p-6 mb-8 space-y-4">
-        <h3 className="font-bold text-claw-black uppercase text-sm tracking-wider mb-4">
+      <div className="bg-bg-primary p-6 mb-8 space-y-4 rounded-lg border border-border">
+        <h3 className="font-bold text-text-primary uppercase text-sm tracking-wider mb-4">
           📋 Resumen de tu pedido
         </h3>
 
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div>
-            <span className="text-claw-black/60">Plan:</span>
-            <p className="font-medium text-claw-black">{PLAN_NAMES[data.plan]}</p>
+            <span className="text-text-muted">Plan:</span>
+            <p className="font-medium text-text-primary">{PLAN_NAMES[data.plan]}</p>
           </div>
           <div>
-            <span className="text-claw-black/60">Contacto:</span>
-            <p className="font-medium text-claw-black">{data.contact.name}</p>
-            <p className="text-claw-black/70 text-xs">{data.contact.email}</p>
+            <span className="text-text-muted">Contacto:</span>
+            <p className="font-medium text-text-primary">{data.contact.name}</p>
+            <p className="text-text-secondary text-xs">{data.contact.email}</p>
           </div>
           <div>
-            <span className="text-claw-black/60">Asistente:</span>
-            <p className="font-medium text-claw-black">{data.assistant.assistantName}</p>
-            <p className="text-claw-black/70 text-xs capitalize">{data.assistant.personality}</p>
+            <span className="text-text-muted">Asistente:</span>
+            <p className="font-medium text-text-primary">{data.assistant.assistantName}</p>
+            <p className="text-text-secondary text-xs capitalize">{data.assistant.personality}</p>
           </div>
           <div>
-            <span className="text-claw-black/60">Integración:</span>
-            <p className="font-medium text-claw-black">{integration?.icon} {integration?.name}</p>
+            <span className="text-text-muted">Integración:</span>
+            <p className="font-medium text-text-primary">{integration?.icon} {integration?.name}</p>
           </div>
           <div>
-            <span className="text-claw-black/60">Modelo IA:</span>
-            <p className="font-medium text-claw-black">{model?.name}</p>
+            <span className="text-text-muted">Modelo IA:</span>
+            <p className="font-medium text-text-primary">{model?.name}</p>
           </div>
           <div>
-            <span className="text-claw-black/60">Skills:</span>
-            <p className="font-medium text-claw-black">{selectedSkillNames.length} seleccionados</p>
+            <span className="text-text-muted">Skills:</span>
+            <p className="font-medium text-text-primary">{selectedSkillNames.length} seleccionados</p>
           </div>
         </div>
 
-        <hr className="border-claw-black/10" />
+        <hr className="border-border" />
 
         {/* Pricing */}
         <div className="space-y-2">
           <div className="flex justify-between text-sm">
-            <span className="text-claw-black/70">Instalación:</span>
-            <span className="font-bold text-claw-black">
+            <span className="text-text-secondary">Instalación:</span>
+            <span className="font-bold text-text-primary">
               ${pricing.setupFee.toLocaleString()} MXN
             </span>
           </div>
+          {pricing.hardwareFee && (
+            <div className="flex justify-between text-sm">
+              <span className="text-text-secondary">Mac Mini:</span>
+              <span className="font-bold text-text-primary">
+                ${pricing.hardwareFee.toLocaleString()} MXN
+              </span>
+            </div>
+          )}
           {pricing.isSubscription && (
             <div className="flex justify-between text-sm">
-              <span className="text-claw-black/70">Mensualidad:</span>
-              <span className="font-bold text-claw-red">
+              <span className="text-text-secondary">Mensualidad:</span>
+              <span className="font-bold text-accent-primary">
                 +${pricing.monthlyFee?.toLocaleString()} MXN/mes
               </span>
             </div>
           )}
         </div>
 
-        <hr className="border-claw-black/10" />
+        <hr className="border-border" />
 
         <div className="flex justify-between items-center">
-          <span className="font-bold text-claw-black">Total hoy:</span>
-          <span className="text-2xl font-bold text-claw-black">
-            ${(pricing.setupFee + (pricing.isSubscription ? (pricing.monthlyFee || 0) : 0)).toLocaleString()} MXN
+          <span className="font-bold text-text-primary">Total hoy:</span>
+          <span className="text-2xl font-bold text-accent-primary">
+            ${totalToday.toLocaleString()} MXN
           </span>
         </div>
 
+        {pricing.hardwareFee && (
+          <p className="text-xs text-text-muted text-center">
+            Incluye Mac Mini ($16,000) + Instalación ($2,500)
+          </p>
+        )}
         {pricing.isSubscription && (
-          <p className="text-xs text-claw-black/50 text-center">
+          <p className="text-xs text-text-muted text-center">
             Se cobrarán ${pricing.setupFee.toLocaleString()} de instalación + primer mes de ${pricing.monthlyFee?.toLocaleString()}
           </p>
         )}
@@ -227,7 +240,7 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
 
       {/* Error Message */}
       {error && (
-        <div className="mb-6 p-4 bg-red-50 border-2 border-red-500 text-red-700">
+        <div className="mb-6 p-4 bg-status-error/10 border border-status-error rounded-lg text-status-error">
           <p className="font-bold">Error</p>
           <p className="text-sm">{error}</p>
         </div>
@@ -237,8 +250,8 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
       <div className="mb-8">
         {isPending || isProcessing ? (
           <div className="flex items-center justify-center py-8">
-            <div className="animate-spin w-8 h-8 border-4 border-claw-black border-t-transparent rounded-full" />
-            <span className="ml-3 text-claw-black/70">
+            <div className="animate-spin w-8 h-8 border-4 border-accent-primary border-t-transparent rounded-full" />
+            <span className="ml-3 text-text-secondary">
               {isProcessing ? 'Procesando pago...' : 'Cargando PayPal...'}
             </span>
           </div>
@@ -265,7 +278,7 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
       </div>
 
       {/* Security Note */}
-      <div className="text-center text-sm text-claw-black/50 mb-8">
+      <div className="text-center text-sm text-text-muted mb-8">
         <p>🔒 Pago seguro procesado por PayPal</p>
         <p className="text-xs mt-1">No almacenamos datos de tu tarjeta</p>
       </div>
@@ -276,7 +289,7 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
           type="button"
           onClick={onBack}
           disabled={isProcessing}
-          className="px-6 py-3 text-claw-black font-bold uppercase tracking-wider text-sm border-2 border-claw-black/20 hover:border-claw-black hover:bg-claw-black/5 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="px-6 py-3 text-text-primary font-bold uppercase tracking-wider text-sm border border-border rounded-lg hover:border-accent-secondary hover:bg-bg-surface-hover transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           ← Atrás
         </button>

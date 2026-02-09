@@ -30,17 +30,17 @@ export function StepSkills({ data, onChange, onNext, onBack }: StepSkillsProps) 
   return (
     <form onSubmit={handleSubmit}>
       <div className="mb-8">
-        <h2 className="text-display text-2xl text-claw-black mb-2">
+        <h2 className="text-display text-2xl text-text-primary mb-2">
           Skills Adicionales
         </h2>
-        <p className="text-claw-black/60">
+        <p className="text-text-secondary">
           Habilidades extra para tu asistente
         </p>
       </div>
 
       {/* Free Skills */}
       <div className="mb-8">
-        <h3 className="text-sm font-bold text-claw-black uppercase tracking-wider mb-4">
+        <h3 className="text-sm font-bold text-text-primary uppercase tracking-wider mb-4">
           ⚡ Incluidos
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -49,24 +49,24 @@ export function StepSkills({ data, onChange, onNext, onBack }: StepSkillsProps) 
               key={skill.id}
               type="button"
               onClick={() => toggleSkill(skill.id)}
-              className={`p-4 border-2 text-left transition-all flex items-center gap-3 ${
+              className={`p-4 border rounded-lg text-left transition-all flex items-center gap-3 ${
                 data.selectedSkills.includes(skill.id)
-                  ? 'border-claw-green bg-claw-green/10'
-                  : 'border-claw-black/20 hover:border-claw-black/40'
+                  ? 'border-accent-primary bg-accent-primary/10'
+                  : 'border-border hover:border-accent-secondary bg-bg-primary'
               }`}
             >
-              <div className={`w-5 h-5 border-2 flex items-center justify-center flex-shrink-0 ${
+              <div className={`w-5 h-5 border-2 rounded flex items-center justify-center flex-shrink-0 ${
                 data.selectedSkills.includes(skill.id)
-                  ? 'border-claw-green bg-claw-green'
-                  : 'border-claw-black/30'
+                  ? 'border-accent-primary bg-accent-primary'
+                  : 'border-border'
               }`}>
                 {data.selectedSkills.includes(skill.id) && (
-                  <span className="text-white text-xs">✓</span>
+                  <span className="text-cta-text text-xs">✓</span>
                 )}
               </div>
               <div>
-                <div className="font-medium text-claw-black">{skill.name}</div>
-                <div className="text-xs text-claw-black/60">{skill.description}</div>
+                <div className="font-medium text-text-primary">{skill.name}</div>
+                <div className="text-xs text-text-secondary">{skill.description}</div>
               </div>
             </button>
           ))}
@@ -75,28 +75,28 @@ export function StepSkills({ data, onChange, onNext, onBack }: StepSkillsProps) 
 
       {/* Premium Skills */}
       <div>
-        <h3 className="text-sm font-bold text-claw-black uppercase tracking-wider mb-4">
-          ✨ Premium <span className="text-claw-black/40 font-normal">(próximamente)</span>
+        <h3 className="text-sm font-bold text-text-primary uppercase tracking-wider mb-4">
+          ✨ Premium <span className="text-text-muted font-normal">(próximamente)</span>
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {premiumSkills.map((skill) => (
             <div
               key={skill.id}
-              className="p-4 border-2 border-claw-black/10 bg-claw-black/5 flex items-center gap-3 opacity-60 cursor-not-allowed"
+              className="p-4 border border-border rounded-lg bg-bg-primary/50 flex items-center gap-3 opacity-60 cursor-not-allowed"
             >
-              <div className="w-5 h-5 border-2 border-claw-black/20 flex-shrink-0" />
+              <div className="w-5 h-5 border-2 border-border rounded flex-shrink-0" />
               <div>
-                <div className="font-medium text-claw-black">{skill.name}</div>
-                <div className="text-xs text-claw-black/60">{skill.description}</div>
+                <div className="font-medium text-text-secondary">{skill.name}</div>
+                <div className="text-xs text-text-muted">{skill.description}</div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mt-6 p-4 bg-claw-black/5 border-l-4 border-claw-green">
-        <p className="text-sm text-claw-black/70">
-          <strong>✓ {data.selectedSkills.length} skills seleccionados.</strong>{' '}
+      <div className="mt-6 p-4 bg-bg-primary border-l-4 border-accent-primary rounded-r-lg">
+        <p className="text-sm text-text-secondary">
+          <strong className="text-text-primary">✓ {data.selectedSkills.length} skills seleccionados.</strong>{' '}
           Podrás agregar o quitar skills después desde la configuración.
         </p>
       </div>
@@ -106,14 +106,13 @@ export function StepSkills({ data, onChange, onNext, onBack }: StepSkillsProps) 
         <button
           type="button"
           onClick={onBack}
-          className="px-6 py-3 text-claw-black font-bold uppercase tracking-wider text-sm border-2 border-claw-black/20 hover:border-claw-black hover:bg-claw-black/5 transition-all"
+          className="px-6 py-3 text-text-primary font-bold uppercase tracking-wider text-sm border border-border rounded-lg hover:border-accent-secondary hover:bg-bg-surface-hover transition-all"
         >
           ← Atrás
         </button>
         <button
           type="submit"
-          className="px-8 py-3 bg-claw-black text-white font-bold uppercase tracking-wider text-sm border-2 border-claw-black hover:bg-claw-green hover:text-claw-black transition-colors"
-          style={{ boxShadow: '4px 4px 0px #0a0a0a' }}
+          className="px-8 py-3 bg-cta-bg text-cta-text font-bold uppercase tracking-wider text-sm rounded-lg hover:bg-cta-bg-hover transition-colors shadow-lg"
         >
           Continuar al Pago →
         </button>
