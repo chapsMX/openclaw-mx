@@ -49,11 +49,11 @@ export function Navbar() {
           <ThemeToggle />
 
           <div className="flex items-center gap-8 font-semibold text-sm uppercase tracking-wider">
-            <Link href="#features" className="text-text-secondary hover:text-text-primary transition-colors relative group">
+            <Link href="/#features" className="text-text-secondary hover:text-text-primary transition-colors relative group">
               Características
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-secondary group-hover:w-full transition-all duration-200" />
             </Link>
-            <Link href="#usecases" className="text-text-secondary hover:text-text-primary transition-colors relative group">
+            <Link href="/#usecases" className="text-text-secondary hover:text-text-primary transition-colors relative group">
               Casos de Uso
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-secondary group-hover:w-full transition-all duration-200" />
             </Link>
@@ -61,7 +61,7 @@ export function Navbar() {
               Blog
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-secondary group-hover:w-full transition-all duration-200" />
             </Link>
-            <Link href="#faq" className="text-text-secondary hover:text-text-primary transition-colors relative group">
+            <Link href="/#faq" className="text-text-secondary hover:text-text-primary transition-colors relative group">
               FAQ
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent-secondary group-hover:w-full transition-all duration-200" />
             </Link>
@@ -69,7 +69,7 @@ export function Navbar() {
 
           {/* CTA Button */}
           <Link
-            href="#plans"
+            href="/#plans"
             className="bg-cta-bg text-cta-text font-bold px-6 py-2.5 text-sm uppercase tracking-wider rounded-lg hover:bg-cta-bg-hover transition-all duration-200 shadow-lg hover:shadow-xl"
           >
             Contratar
@@ -120,14 +120,14 @@ export function Navbar() {
           </div>
           
           <Link 
-            href="#features" 
+            href="/#features" 
             className="block py-2 border-b border-border text-text-secondary hover:text-text-primary" 
             onClick={() => setMobileMenuOpen(false)}
           >
             Características
           </Link>
           <Link 
-            href="#usecases" 
+            href="/#usecases" 
             className="block py-2 border-b border-border text-text-secondary hover:text-text-primary" 
             onClick={() => setMobileMenuOpen(false)}
           >
@@ -141,14 +141,14 @@ export function Navbar() {
             Blog
           </Link>
           <Link 
-            href="#faq" 
+            href="/#faq" 
             className="block py-2 border-b border-border text-text-secondary hover:text-text-primary" 
             onClick={() => setMobileMenuOpen(false)}
           >
             FAQ
           </Link>
           <Link
-            href="#plans"
+            href="/#plans"
             className="block bg-cta-bg text-cta-text text-center py-3 mt-4 rounded-lg font-bold shadow-lg"
             onClick={() => setMobileMenuOpen(false)}
           >
