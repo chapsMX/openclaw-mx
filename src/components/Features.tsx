@@ -51,22 +51,22 @@ export function Features() {
   ];
 
   return (
-    <section id="features" className="py-20 bg-claw-black">
+    <section id="features" className="py-20 bg-bg-surface">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-display text-4xl md:text-5xl text-white mb-4">
-            Open <span className="text-claw-red">Claw</span>
+          <h2 className="text-display text-4xl md:text-5xl text-text-primary mb-4">
+            Open <span className="text-accent-primary">Claw</span>
           </h2>
-          <p className="text-claw-red text-xl md:text-2xl font-semibold mb-4">
+          <p className="text-accent-secondary text-xl md:text-2xl font-semibold mb-4">
             El Asistente Personal IA que realmente trabaja por ti!
           </p>
-          <p className="text-white/70 max-w-2xl mx-auto">
+          <p className="text-text-secondary max-w-2xl mx-auto">
             Revisa y responde emails en tu nombre, administra tu calendario, te
             notifica sobre lo importante, planea vuelos, etc. Todo desde
             WhatsApp, Telegram o Discord.
           </p>
-          <div className="w-24 h-1 bg-claw-green mx-auto mt-6" />
+          <div className="w-24 h-1 bg-accent-primary mx-auto mt-6 rounded-full" />
         </div>
 
         {/* Features Grid */}
@@ -74,18 +74,18 @@ export function Features() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-claw-white border-3 border-claw-black p-6 relative brutal-border-hover transition-all duration-200"
+              className="bg-bg-primary border border-border rounded-xl p-6 relative transition-all duration-200 hover:border-accent-primary hover:shadow-lg group"
             >
               {/* Icon */}
-              <div className="w-12 h-12 border-2 border-claw-black flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-bg-surface border border-border rounded-lg flex items-center justify-center mb-4 group-hover:border-accent-secondary transition-colors">
                 <span className="text-2xl">{feature.icon}</span>
               </div>
 
               {/* Content */}
-              <h3 className="font-bold text-xl mb-3 uppercase tracking-wide">
+              <h3 className="font-bold text-lg mb-3 uppercase tracking-wide text-text-primary">
                 {feature.title}
               </h3>
-              <p className="text-claw-black/70">{feature.description}</p>
+              <p className="text-text-secondary text-sm">{feature.description}</p>
             </div>
           ))}
         </div>

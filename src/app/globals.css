@@ -1,47 +1,138 @@
 @import "tailwindcss";
 
+/* ========================================
+   THEME SYSTEM - Two Color Palettes
+   ======================================== */
+
 :root {
-  /* Neo-Brutalist Color Palette - Refined */
-  --claw-green: #00ff9d;
-  --claw-green-dark: #00cc7d;
-  --claw-green-light: #4dffb8;
-  --claw-black: #0a0a0a;
-  --claw-white: #fafafa;
-  --claw-red: #ff3b3b;
-  --claw-red-dark: #e62e2e;
-  --claw-blue: #3b82f6;
-  --claw-yellow: #fbbf24;
-  --claw-purple: #a855f7;
-  
-  /* Backgrounds */
-  --bg-light: #f5f5f5;
-  --bg-cream: #faf9f7;
-  --bg-dark: #0a0a0f;
+  /* Default to Navy theme */
+  --theme: 'navy';
+}
+
+/* PALETA 1: Navy / Enterprise */
+[data-theme="navy"], :root {
+  /* Fondo principal — Azul marino muy oscuro */
+  --bg-primary: #0a1628;
+  /* Superficies — Gris azulado carbón */
+  --bg-surface: #1a2744;
+  --bg-surface-hover: #243352;
+  /* Texto principal — Blanco frío */
+  --text-primary: #f0f4f8;
+  /* Texto secundario — Gris técnico */
+  --text-secondary: #8899a8;
+  --text-muted: #5a6b7a;
+  /* CTA / Acción — Azul intenso */
+  --accent-primary: #2563eb;
+  --accent-primary-hover: #3b82f6;
+  /* Acento tecnológico — Cian suave */
+  --accent-secondary: #22d3ee;
+  --accent-secondary-muted: rgba(34, 211, 238, 0.2);
+  /* Borders */
+  --border-color: #2d3f5a;
+  --border-strong: #3d5070;
+  /* Shadows */
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  /* CTA specific */
+  --cta-bg: #2563eb;
+  --cta-bg-hover: #3b82f6;
+  --cta-text: #ffffff;
+  /* Status */
+  --status-success: #22d3ee;
+  --status-warning: #fbbf24;
+  --status-error: #ef4444;
+}
+
+/* PALETA 2: AI / Violet */
+[data-theme="violet"] {
+  /* Fondo principal — Negro azulado profundo */
+  --bg-primary: #0c0f1a;
+  /* Superficies — Gris oscuro neutro */
+  --bg-surface: #1c1f2e;
+  --bg-surface-hover: #262a3d;
+  /* Texto principal — Blanco limpio */
+  --text-primary: #ffffff;
+  /* Texto secundario — Gris claro frío */
+  --text-secondary: #9ca3af;
+  --text-muted: #6b7280;
+  /* CTA / Diferenciador — Violeta sofisticado */
+  --accent-primary: #7c3aed;
+  --accent-primary-hover: #8b5cf6;
+  /* Acento secundario — Azul cielo */
+  --accent-secondary: #38bdf8;
+  --accent-secondary-muted: rgba(56, 189, 248, 0.2);
+  /* Borders */
+  --border-color: #2d2f3d;
+  --border-strong: #3d4050;
+  /* Shadows */
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  /* CTA specific */
+  --cta-bg: #7c3aed;
+  --cta-bg-hover: #8b5cf6;
+  --cta-text: #ffffff;
+  /* Status */
+  --status-success: #38bdf8;
+  --status-warning: #fbbf24;
+  --status-error: #ef4444;
+}
+
+/* Legacy color mappings for compatibility */
+:root {
+  --claw-green: var(--accent-secondary);
+  --claw-green-dark: var(--accent-primary);
+  --claw-black: var(--bg-primary);
+  --claw-white: var(--text-primary);
+  --claw-red: var(--status-error);
+  --claw-blue: var(--accent-primary);
+  --claw-purple: var(--accent-primary);
+  --bg-cream: var(--bg-surface);
+  --bg-dark: var(--bg-primary);
 }
 
 @theme inline {
-  --color-claw-green: var(--claw-green);
-  --color-claw-green-dark: var(--claw-green-dark);
-  --color-claw-green-light: var(--claw-green-light);
-  --color-claw-black: var(--claw-black);
-  --color-claw-white: var(--claw-white);
-  --color-claw-red: var(--claw-red);
-  --color-claw-red-dark: var(--claw-red-dark);
-  --color-claw-blue: var(--claw-blue);
-  --color-claw-yellow: var(--claw-yellow);
-  --color-claw-purple: var(--claw-purple);
-  --color-bg-light: var(--bg-light);
-  --color-bg-cream: var(--bg-cream);
-  --color-bg-dark: var(--bg-dark);
+  /* New theme colors */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-surface: var(--bg-surface);
+  --color-bg-surface-hover: var(--bg-surface-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-hover: var(--accent-primary-hover);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-border: var(--border-color);
+  --color-border-strong: var(--border-strong);
+  --color-cta-bg: var(--cta-bg);
+  --color-cta-bg-hover: var(--cta-bg-hover);
+  --color-cta-text: var(--cta-text);
+  
+  /* Legacy compatibility */
+  --color-claw-green: var(--accent-secondary);
+  --color-claw-green-dark: var(--accent-primary);
+  --color-claw-black: var(--bg-primary);
+  --color-claw-white: var(--text-primary);
+  --color-claw-red: var(--status-error);
+  --color-claw-blue: var(--accent-primary);
+  --color-claw-purple: var(--accent-primary);
+  --color-bg-cream: var(--bg-surface);
+  --color-bg-dark: var(--bg-primary);
   
   --font-display: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* Smooth scrolling */
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom scrollbar */
@@ -50,29 +141,34 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--claw-black);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--claw-green);
+  background: var(--accent-secondary);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--claw-green-dark);
+  background: var(--accent-primary);
 }
 
-/* Typography */
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
 .text-display {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.03em;
+  color: var(--text-primary);
 }
 
 .text-body {
   font-family: var(--font-body);
   line-height: 1.6;
+  color: var(--text-secondary);
 }
 
 .text-mono {
@@ -80,85 +176,115 @@ html {
   font-size: 0.9em;
 }
 
-/* Neo-Brutalist Borders - Refined */
-.brutal-border {
-  border: 3px solid var(--claw-black);
-  box-shadow: 5px 5px 0px var(--claw-black);
-  transition: all 0.15s ease;
+/* ========================================
+   COMPONENT STYLES
+   ======================================== */
+
+/* Cards */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.2s ease;
 }
 
-.brutal-border-green {
-  border: 3px solid var(--claw-black);
-  box-shadow: 5px 5px 0px var(--claw-green);
+.card:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-surface-hover);
 }
 
-.brutal-border-red {
-  border: 3px solid var(--claw-black);
-  box-shadow: 5px 5px 0px var(--claw-red);
-}
-
-.brutal-border-hover:hover {
-  box-shadow: 7px 7px 0px var(--claw-black);
-  transform: translate(-2px, -2px);
-}
-
-.brutal-btn {
-  border: 3px solid var(--claw-black);
-  box-shadow: 4px 4px 0px var(--claw-black);
-  transition: all 0.1s ease;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.brutal-btn:hover {
-  box-shadow: 2px 2px 0px var(--claw-black);
-  transform: translate(2px, 2px);
-}
-
-.brutal-btn:active {
-  box-shadow: 0px 0px 0px var(--claw-black);
-  transform: translate(4px, 4px);
-}
-
-/* Card styles */
 .card-elevated {
-  background: var(--claw-white);
-  border: 3px solid var(--claw-black);
-  box-shadow: 6px 6px 0px var(--claw-black);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 24px var(--shadow-color);
+  border-radius: 12px;
   transition: all 0.2s ease;
 }
 
 .card-elevated:hover {
-  box-shadow: 8px 8px 0px var(--claw-black);
-  transform: translate(-2px, -2px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--shadow-color);
 }
 
-/* Geometric shapes */
-.shape-circle {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
+/* Buttons */
+.btn-primary {
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-.shape-diamond {
-  width: 12px;
-  height: 12px;
-  transform: rotate(45deg);
+.btn-primary:hover {
+  background: var(--cta-bg-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
-.shape-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
-/* Section spacing */
-.section-padding {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+.btn-secondary:hover {
+  border-color: var(--accent-primary);
+  background: var(--accent-secondary-muted);
 }
 
-/* Animations */
+/* Legacy brutal styles - softened */
+.brutal-border {
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 16px var(--shadow-color);
+  border-radius: 12px;
+  transition: all 0.15s ease;
+}
+
+.brutal-border:hover {
+  border-color: var(--accent-primary);
+}
+
+.brutal-btn {
+  background: var(--cta-bg);
+  color: var(--cta-text);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  transition: all 0.15s ease;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.brutal-btn:hover {
+  background: var(--cta-bg-hover);
+  box-shadow: 0 4px 16px var(--shadow-color);
+  transform: translateY(-1px);
+}
+
+.brutal-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+/* Border utilities */
+.border-3 {
+  border-width: 1px;
+}
+
+.border-4 {
+  border-width: 1px;
+}
+
+/* ========================================
+   ANIMATIONS
+   ======================================== */
+
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-8px); }
@@ -166,12 +292,10 @@ html {
 
 @keyframes pulse-glow {
   0%, 100% { 
-    box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
-    text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+    box-shadow: 0 0 20px var(--accent-secondary-muted);
   }
   50% { 
-    box-shadow: 0 0 35px rgba(0, 255, 157, 0.5);
-    text-shadow: 0 0 20px rgba(0, 255, 157, 0.8);
+    box-shadow: 0 0 35px var(--accent-secondary-muted);
   }
 }
 
@@ -192,23 +316,52 @@ html {
   animation: blink 1s infinite;
 }
 
-/* Selection */
+/* ========================================
+   SELECTION & FOCUS
+   ======================================== */
+
 ::selection {
-  background: var(--claw-green);
-  color: var(--claw-black);
+  background: var(--accent-primary);
+  color: var(--cta-text);
 }
 
-/* Focus styles */
 :focus-visible {
-  outline: 3px solid var(--claw-green);
+  outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
 }
 
-/* Border utilities */
-.border-3 {
-  border-width: 3px;
+/* ========================================
+   THEME TOGGLE STYLES
+   ======================================== */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
 }
 
-.border-4 {
-  border-width: 4px;
+.theme-toggle-btn {
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.theme-toggle-btn.active {
+  background: var(--accent-primary);
+  color: var(--cta-text);
+}
+
+.theme-toggle-btn:hover:not(.active) {
+  background: var(--bg-surface-hover);
+  color: var(--text-primary);
 }

@@ -5,76 +5,67 @@ export function UseCases() {
       title: "Desarrolladores",
       description: "Automatiza deploys, monitorea servers, debugea más rápido.",
       category: "TECH",
-      categoryColor: "bg-claw-blue",
     },
     {
       emoji: "🏠",
       title: "Trabajo Remoto",
       description: "Productividad desde cualquier lugar. Organiza tu día.",
       category: "NEGOCIO",
-      categoryColor: "bg-claw-green",
     },
     {
       emoji: "🎬",
       title: "Creadores",
       description: "Crea más, administra menos. DMs, analytics, scheduling.",
       category: "NEGOCIO",
-      categoryColor: "bg-claw-green",
     },
     {
       emoji: "🏢",
       title: "Real Estate",
       description: "Nunca pierdas un lead. Follow-ups automáticos 24/7.",
       category: "SERVICIOS",
-      categoryColor: "bg-claw-purple",
     },
     {
       emoji: "🎯",
       title: "Freelancers",
       description: "Tu back office automatizado. Facturación y clientes.",
       category: "SERVICIOS",
-      categoryColor: "bg-claw-purple",
     },
     {
       emoji: "📈",
       title: "Ventas",
       description: "Cierra más deals, actualiza menos CRM. Enfócate.",
       category: "SERVICIOS",
-      categoryColor: "bg-claw-purple",
     },
     {
       emoji: "⚖️",
       title: "Legal",
       description: "Horas facturables, no papeleo. Gestiona casos.",
       category: "SERVICIOS",
-      categoryColor: "bg-claw-purple",
     },
     {
       emoji: "🧩",
       title: "Consultoría",
       description: "Escala tu impacto sin quemarte. Más clientes.",
       category: "NEGOCIO",
-      categoryColor: "bg-claw-green",
     },
     {
       emoji: "📣",
       title: "Marketing",
       description: "Campañas 2x más rápido. Análisis y reportes.",
       category: "NEGOCIO",
-      categoryColor: "bg-claw-green",
     },
   ];
 
   return (
-    <section id="usecases" className="py-20 bg-claw-black">
+    <section id="usecases" className="py-20 bg-bg-surface">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-display text-4xl md:text-5xl text-white mb-4">
+          <h2 className="text-display text-4xl md:text-5xl text-text-primary mb-4">
             ¿QUÉ PUEDE HACER POR TI?
           </h2>
-          <div className="w-24 h-1 bg-claw-green mx-auto mb-4" />
-          <p className="text-white/60 max-w-xl mx-auto">
+          <div className="w-24 h-1 bg-accent-primary mx-auto mb-4 rounded-full" />
+          <p className="text-text-secondary max-w-xl mx-auto">
             Diferente trabajo, diferentes necesidades. Encuentra tu perfil.
           </p>
         </div>
@@ -84,25 +75,23 @@ export function UseCases() {
           {useCases.map((useCase, index) => (
             <div
               key={index}
-              className="bg-claw-white border-3 border-claw-black p-6 brutal-border-hover transition-all duration-200 cursor-pointer"
+              className="bg-bg-primary border border-border rounded-xl p-6 transition-all duration-200 cursor-pointer hover:border-accent-primary hover:shadow-lg group"
             >
               {/* Emoji */}
               <span className="text-5xl block mb-4">{useCase.emoji}</span>
 
               {/* Title */}
-              <h3 className="font-bold text-xl mb-2 uppercase tracking-wide">
+              <h3 className="font-bold text-xl mb-2 uppercase tracking-wide text-text-primary">
                 {useCase.title}
               </h3>
 
               {/* Description */}
-              <p className="text-claw-black/70 text-sm mb-4">
+              <p className="text-text-secondary text-sm mb-4">
                 {useCase.description}
               </p>
 
               {/* Category Badge */}
-              <span
-                className={`inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider ${useCase.categoryColor} text-white`}
-              >
+              <span className="inline-block px-3 py-1 text-xs font-bold uppercase tracking-wider bg-accent-primary text-cta-text rounded-full">
                 {useCase.category}
               </span>
             </div>
