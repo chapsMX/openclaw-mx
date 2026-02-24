@@ -10,6 +10,81 @@ export interface Post {
 
 export const posts: Post[] = [
   {
+    slug: "openclaw-cdmx-meetup",
+    title: "OpenClaw x CDMX 🦞",
+    description: "Un meetup casual para builders, curiosos y futuros agentes. Jueves 26 de Febrero a las 17:30. Networking, charlas técnicas y experimentos en vivo.",
+    date: "24 de Febrero, 2026",
+    readTime: "4 min",
+    category: "EVENTO",
+    content: `
+## Un meetup para agentes virtuales
+
+Si has escuchado hablar de OpenClaw, si ya lo estás usando, o si apenas quieres entender qué demonios está pasando con los agentes virtuales… este meetup es para ti.
+
+**Cuándo:** Jueves 26 de Febrero / 17:30 horas  
+**Dónde:** CDMX  
+**Entrada:** Libre
+
+---
+
+## 🦞 Sin agenda rígida. Sin presentaciones eternas. Sin reglas.
+
+En este meetup vas a:
+
+### 🎯 Entender qué es OpenClaw
+- Qué problema resuelve
+- Cómo funciona su arquitectura
+- Cómo se conecta con modelos, skills y canales
+- Por qué es relevante en el ecosistema actual de agentes
+
+### ⚙️ Compartir consejos de setup
+- Instalación paso a paso
+- Configuración básica
+- Errores comunes y cómo evitarlos
+- Sin frustración
+
+### 💾 Optimización de recursos
+- Cómo correrlo en máquinas pequeñas
+- Cómo evitar consumo excesivo de memoria
+- Cómo elegir modelos según tu caso de uso
+- Cómo mantener estabilidad en producción
+
+### 🚀 Ver ejemplos reales funcionando
+- Asistentes virtuales
+- Juegos
+- Mini apps
+- Automatizaciones
+- Experimentos ya corriendo en vivo
+
+### 🤔 Resolver dudas
+- Preguntas técnicas, estratégicas o conceptuales
+- Espacio abierto, sin filtros
+
+### 🤝 Hablar con builders
+- Conversar directamente con builders que ya están experimentando
+- Aprender de quienes están lanzando cosas con OpenClaw
+
+---
+
+## Pero sobre todo vas a hacer mucho networking.
+
+El meetup está abierto a **todos los niveles**: principiante, intermedio, avanzado o simplemente curiosos.
+
+**La entrada es libre, pero cada asistente es responsable de su consumo.**
+
+---
+
+## Ven a aprender, experimentar y conectar
+
+Ambiente relajado, conversación abierta y mucha energía agente.
+
+**Nos vemos ahí. 🦞**
+
+### Registrate aquí:
+[https://app.unlock-protocol.com/event/open-claw-x-cdmx](https://app.unlock-protocol.com/event/open-claw-x-cdmx)
+    `,
+  },
+  {
     slug: "que-es-openclaw",
     title: "¿Qué es OpenClaw?",
     description: "Descubre qué es OpenClaw, cómo funciona, y por qué es diferente a ChatGPT o Claude. Un asistente IA personal que corre en tu propia infraestructura y realmente te conoce.",
