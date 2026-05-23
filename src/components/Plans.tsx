@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import Link from "next/link";
+import { PLAN_PRICING, type PlanType } from '@/lib/types';
+import { trackBeginCheckout } from '@/lib/analytics';
 
 interface Inventory {
   plan_type: string;
@@ -202,6 +204,14 @@ export function Plans() {
                 ) : (
                   <Link
                     href={`/onboarding?plan=${plan.id}`}
+                    onClick={() => {
+                      const pricing = PLAN_PRICING[plan.id as PlanType];
+                      trackBeginCheckout(
+                        plan.id,
+                        plan.subtitle ? `${plan.name} (${plan.subtitle})` : plan.name,
+                        pricing.setupFee + (pricing.hardwareFee ?? 0),
+                      );
+                    }}
                     className={`block w-full text-center font-bold py-4 uppercase tracking-wider text-sm rounded-lg transition-all duration-200 ${
                       plan.popular
                         ? "bg-cta-bg text-cta-text hover:bg-cta-bg-hover shadow-lg hover:shadow-xl"

@@ -8,11 +8,12 @@ import { StepIntegration } from './StepIntegration';
 import { StepModel } from './StepModel';
 import { StepSkills } from './StepSkills';
 import { StepPayment } from './StepPayment';
-import { 
-  type OnboardingData, 
+import {
+  type OnboardingData,
   type PlanType,
   PLAN_PRICING,
 } from '@/lib/types';
+import { trackOnboardingStep } from '@/lib/analytics';
 
 interface OnboardingWizardProps {
   plan: PlanType;
@@ -55,7 +56,10 @@ export function OnboardingWizard({ plan }: OnboardingWizardProps) {
   };
 
   const nextStep = () => {
-    if (currentStep < 6) setCurrentStep(prev => prev + 1);
+    if (currentStep < 6) {
+      trackOnboardingStep(currentStep, STEPS[currentStep - 1].name, plan);
+      setCurrentStep(prev => prev + 1);
+    }
   };
 
   const prevStep = () => {

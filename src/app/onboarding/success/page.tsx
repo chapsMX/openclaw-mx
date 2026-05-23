@@ -1,16 +1,22 @@
 import Link from 'next/link';
+import { PurchaseTracker } from '@/components/onboarding/PurchaseTracker';
 
 interface SuccessPageProps {
-  searchParams: Promise<{ orderId?: string; subscriptionId?: string }>;
+  searchParams: Promise<{ orderId?: string; subscriptionId?: string; plan?: string; value?: string }>;
 }
 
 export default async function SuccessPage({ searchParams }: SuccessPageProps) {
   const params = await searchParams;
-  const { orderId, subscriptionId } = params;
+  const { orderId, subscriptionId, plan, value } = params;
   const isSubscription = !!subscriptionId;
+
+  const transactionId = subscriptionId ?? orderId;
 
   return (
     <div className="min-h-screen bg-bg-primary flex items-center justify-center py-12 px-4">
+      {transactionId && plan && value && (
+        <PurchaseTracker transactionId={transactionId} planId={plan} value={Number(value)} />
+      )}
       <div className="bg-bg-surface border border-border rounded-xl p-10 max-w-lg w-full text-center shadow-xl">
         {/* Success Icon */}
         <div className="text-6xl mb-6">🎉</div>

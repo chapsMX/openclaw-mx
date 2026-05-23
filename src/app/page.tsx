@@ -8,10 +8,12 @@ import { UseCases } from "@/components/UseCases";
 import { FAQ } from "@/components/FAQ";
 import { FinalLogo } from "@/components/FinalLogo";
 import { Footer } from "@/components/Footer";
+import { ScrollDepthTracker } from "@/components/ScrollDepthTracker";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-claw-green">
+      <ScrollDepthTracker />
       <Navbar />
       <Hero />
       <Stats />

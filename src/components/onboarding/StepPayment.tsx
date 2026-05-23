@@ -5,6 +5,7 @@ import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import type { CreateOrderActions, OnApproveData, OnApproveActions, CreateSubscriptionActions } from '@paypal/paypal-js';
 import type { OnboardingData, PlanPricing } from '@/lib/types';
 import { INTEGRATIONS, AI_MODELS, AVAILABLE_SKILLS } from '@/lib/types';
+import { trackPaymentError } from '@/lib/analytics';
 
 interface StepPaymentProps {
   data: OnboardingData;
@@ -77,8 +78,7 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
         throw new Error(result.error || 'Error al procesar el pago');
       }
 
-      // Redirect to success page
-      window.location.href = `/onboarding/success?orderId=${approveData.orderID}`;
+      window.location.href = `/onboarding/success?orderId=${approveData.orderID}&plan=${data.plan}&value=${totalSetup}`;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al procesar el pago');
     } finally {
@@ -135,7 +135,7 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
         throw new Error(result.error || 'Error al activar la suscripción');
       }
 
-      window.location.href = `/onboarding/success?subscriptionId=${subscriptionID}`;
+      window.location.href = `/onboarding/success?subscriptionId=${subscriptionID}&plan=${data.plan}&value=${totalToday}`;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Error al activar la suscripción');
     } finally {
@@ -268,9 +268,11 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
             createSubscription={pricing.isSubscription ? handleCreateSubscription : undefined}
             onError={(err) => {
               console.error('PayPal error:', err);
+              trackPaymentError(data.plan, 'paypal_error');
               setError('Error con PayPal. Por favor intenta de nuevo.');
             }}
             onCancel={() => {
+              trackPaymentError(data.plan, 'cancel');
               setError('Pago cancelado. Puedes intentar de nuevo cuando quieras.');
             }}
           />
