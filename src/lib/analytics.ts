@@ -7,6 +7,13 @@ function trackEvent(name: string, params?: Record<string, unknown>) {
   (window as WindowWithGtag).gtag?.('event', name, params);
 }
 
+export function trackPageView(path: string) {
+  trackEvent('page_view', {
+    page_path: path,
+    page_location: window.location.href,
+  });
+}
+
 export function trackBeginCheckout(planId: string, planName: string, value: number) {
   trackEvent('begin_checkout', {
     currency: 'MXN',

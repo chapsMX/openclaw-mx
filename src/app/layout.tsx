@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
+import { PageviewTracker } from "@/components/PageviewTracker";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -127,6 +128,7 @@ export default function RootLayout({
         {children}
         {GA_ID && (
           <>
+            <PageviewTracker />
             <Script
               src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
               strategy="afterInteractive"
@@ -136,7 +138,7 @@ export default function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${GA_ID}');
+                gtag('config', '${GA_ID}', { send_page_view: false });
               `}
             </Script>
           </>
