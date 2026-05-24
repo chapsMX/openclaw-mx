@@ -25,11 +25,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://openclaw.mx"),
   title: {
-    default: "Instalación de OpenClaw | Tu asistente virtual IA",
+    default: "Instalación de OpenClaw | Creamos tu agente virtual IA personalizado",
     template: "%s | OpenClaw.mx",
   },
   description:
-    "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
+    "Instalación de OpenClaw. Desplegamos y configuramos tu agente virtual IA personalizado. Opciones en Self Hosted o Managed Hosting. Tu agente virtual IA personalizado 24/7.",
   keywords: [
     "OpenClaw",
     "asistente virtual",
@@ -49,23 +49,23 @@ export const metadata: Metadata = {
     locale: "es_MX",
     url: "https://openclaw.mx",
     siteName: "OpenClaw.mx",
-    title: "Instalación de OpenClaw | Tu asistente virtual IA",
+    title: "Instalación de OpenClaw | Creamos tu agente virtual IA personalizado",
     description:
-      "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
+      "Instalación de OpenClaw. Desplegamos y configuramos tu agente virtual IA personalizado. Opciones en Self Hosted o Managed Hosting. Tu agente virtual IA personalizado 24/7.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Instalación de OpenClaw | Tu asistente virtual IA",
+        alt: "Instalación de OpenClaw | Creamos tu agente virtual IA personalizado",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Instalación de OpenClaw | Tu asistente virtual IA",
+    title: "Instalación de OpenClaw | Creamos tu agente virtual IA personalizado",
     description:
-      "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
+      "Instalación de OpenClaw. Desplegamos y configuramos tu agente virtual IA personalizado. Opciones en Self Hosted o Managed Hosting. Tu agente virtual IA personalizado 24/7.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -95,10 +95,10 @@ export default function RootLayout({
                   "@type": "WebPage",
                   "@id": "https://openclaw.mx/",
                   "url": "https://openclaw.mx/",
-                  "name": "Instalación de OpenClaw | Tu asistente virtual IA",
+                  "name": "Instalación de OpenClaw | Creamos tu agente virtual IA personalizado",
                   "isPartOf": {"@id": "https://openclaw.mx/#website"},
                   "about": {"@id": "https://openclaw.mx/#organization"},
-                  "description": "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
+                  "description": "Instalación de OpenClaw. Desplegamos y configuramos tu agente virtual IA personalizado. Opciones en Self Hosted o Managed Hosting. Tu agente virtual IA personalizado 24/7.",
                   "inLanguage": "es-MX"
                 },
                 {
@@ -106,7 +106,7 @@ export default function RootLayout({
                   "@id": "https://openclaw.mx/#website",
                   "url": "https://openclaw.mx/",
                   "name": "Instalación OpenClaw",
-                  "description": "Instalación de OpenClaw. Desplegamos y configuramos tu Asistente Virtual IA. Opciones en Self Hosted o Managed Hosting. Tu asistente personal 24/7.",
+                  "description": "Instalación de OpenClaw. Desplegamos y configuramos tu agente virtual IA personalizado. Opciones en Self Hosted o Managed Hosting. Tu agente virtual IA personalizado 24/7.",
                   "publisher": {"@id": "https://openclaw.mx/#organization"},
                   "inLanguage": "es-MX"
                 },
@@ -115,7 +115,7 @@ export default function RootLayout({
                   "@id": "https://openclaw.mx/#organization",
                   "name": "OpenClaw.mx",
                   "url": "https://openclaw.mx/",
-                  "description": "Servicio de instalación y configuración de asistentes virtuales OpenClaw en México"
+                  "description": "Servicio de instalación y configuración de agentes virtuales IA personalizados OpenClaw en México"
                 }
               ]
             })
