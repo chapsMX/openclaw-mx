@@ -275,6 +275,56 @@ export function Plans() {
                     </Link>
                   )}
                 </div>
+
+                {/* Inventory Badge */}
+                {plan.showInventory && available !== null && available > 0 && (
+                  <div className="mb-6 p-3 bg-accent-primary/10 border border-accent-primary/30 rounded-lg text-center">
+                    <p className="text-accent-primary font-bold text-sm">
+                      🔥 ¡Solo quedan {available} de 10!
+                    </p>
+                  </div>
+                )}
+
+                {/* Features */}
+                <ul className="space-y-3.5 mb-10">
+                  {plan.features.map((feature, fIndex) => (
+                    <li key={fIndex} className="flex items-start gap-3 text-sm">
+                      <span className="mt-0.5 text-base text-accent-secondary">
+                        ✓
+                      </span>
+                      <span className="text-text-secondary leading-relaxed">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                {soldOut ? (
+                  <button
+                    disabled
+                    className="block w-full text-center font-bold py-4 uppercase tracking-wider text-sm bg-bg-surface-hover text-text-muted rounded-lg cursor-not-allowed"
+                  >
+                    Agotado
+                  </button>
+                ) : (
+                  <Link
+                    href={`/onboarding/${plan.id}`}
+                    onClick={() => {
+                      const pricing = PLAN_PRICING[plan.id as PlanType];
+                      trackBeginCheckout(
+                        plan.id,
+                        plan.subtitle ? `${plan.name} (${plan.subtitle})` : plan.name,
+                        pricing.setupFee + (pricing.hardwareFee ?? 0),
+                      );
+                    }}
+                    className={`block w-full text-center font-bold py-4 uppercase tracking-wider text-sm rounded-lg transition-all duration-200 ${
+                      plan.popular
+                        ? "bg-cta-bg text-cta-text hover:bg-cta-bg-hover shadow-lg hover:shadow-xl"
+                        : "bg-bg-surface-hover text-text-primary hover:bg-accent-primary hover:text-cta-text border border-border hover:border-accent-primary"
+                    }`}
+                  >
+                    Contratar Ahora
+                  </Link>
+                )}
               </div>
               </FadeIn>
             );

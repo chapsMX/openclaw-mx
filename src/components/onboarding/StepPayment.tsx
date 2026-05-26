@@ -228,7 +228,7 @@ export function StepPayment({ data, pricing, onBack }: StepPaymentProps) {
 
         {pricing.hardwareFee && (
           <p className="text-xs text-text-muted text-center">
-            Incluye Mac Mini ($16,000) + Instalación ($2,500)
+            Incluye Mac Mini (${pricing.hardwareFee.toLocaleString()}) + Instalación (${pricing.setupFee.toLocaleString()})
           </p>
         )}
         {pricing.isSubscription && (
