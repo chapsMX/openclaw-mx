@@ -115,8 +115,8 @@ export function Plans() {
             Instalación <span className="gradient-text">OpenClaw</span>
           </h2>
           <p className="text-text-secondary mt-4 max-w-xl mx-auto">
-            Tres opciones adaptadas a tus necesidades. Todos incluyen configuración personalizada y guía de uso.
-          </p>
+          OpenClaw en menos de 60 segundos.
+          Nosotros nos encargamos de todo: Servidores, docker, dependencias, archivos de configuración, skills, etc.</p>
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-accent-primary to-transparent mx-auto mt-8" />
         </div>
 
