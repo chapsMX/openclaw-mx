@@ -317,6 +317,77 @@ body {
 }
 
 /* ========================================
+   GLASSMORPHISM & MODERN UTILITIES
+   ======================================== */
+
+/* Glass morphism card */
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--accent-secondary) 0%,
+    var(--accent-primary) 85%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle dot-grid background */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Gradient CTA button */
+.btn-gradient {
+  background: linear-gradient(135deg, var(--cta-bg) 0%, var(--accent-secondary) 100%);
+  color: var(--cta-text);
+  transition: box-shadow 0.3s ease, transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn-gradient:hover {
+  filter: brightness(1.1) saturate(1.2);
+  box-shadow: 0 0 40px var(--accent-secondary-muted), 0 8px 24px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-gradient:active {
+  transform: translateY(0);
+}
+
+/* Ambient orb animations */
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(28px, -28px) scale(1.06); }
+  70%       { transform: translate(-16px, 14px) scale(0.96); }
+}
+
+.animate-orb {
+  animation: orb-float 18s ease-in-out infinite;
+}
+
+.animate-orb-alt {
+  animation: orb-float 24s ease-in-out infinite;
+  animation-delay: -10s;
+  animation-direction: reverse;
+}
+
+/* Gradient card glow on hover */
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(34, 211, 238, 0.08), 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
    SELECTION & FOCUS
    ======================================== */
 
