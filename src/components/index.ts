@@ -9,3 +9,5 @@ export { FAQ } from "./FAQ";
 export { FinalLogo } from "./FinalLogo";
 export { Footer } from "./Footer";
 export { ThemeToggle } from "./ThemeToggle";
+export { Testimonials } from "./Testimonials";
+export { Comparison } from "./Comparison";
