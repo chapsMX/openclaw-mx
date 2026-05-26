@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
           payment_id: orderId,
           payment_type: 'order',
           status: 'completed',
-          amount: pricing.setupFee,
+          amount: pricing.setupFee + (pricing.hardwareFee || 0),
           plan: onboardingData.plan,
           contact_name: onboardingData.contact.name,
           contact_email: onboardingData.contact.email,
