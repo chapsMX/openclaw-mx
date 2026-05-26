@@ -29,7 +29,7 @@ export function Video() {
           <div className="relative glass rounded-2xl overflow-hidden shadow-2xl aspect-video">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+              src="https://www.youtube.com/embed/8kNv3rjQaVA"
               title="OpenClaw Demo"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

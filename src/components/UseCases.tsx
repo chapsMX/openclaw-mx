@@ -1,3 +1,5 @@
+import { FadeIn } from '@/components/FadeIn';
+
 export function UseCases() {
   const useCases = [
     {
@@ -76,7 +78,7 @@ export function UseCases() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <FadeIn direction="up" className="text-center mb-16">
           <p className="text-accent-secondary font-mono text-sm tracking-wider mb-4 opacity-70">
             // CASOS DE USO
           </p>
@@ -87,14 +89,14 @@ export function UseCases() {
           <p className="text-text-secondary max-w-xl mx-auto leading-relaxed">
             Diferente trabajo, diferentes necesidades. Encuentra tu perfil.
           </p>
-        </div>
+        </FadeIn>
 
         {/* Use cases grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {useCases.map((useCase, index) => (
+            <FadeIn key={index} delay={index * 70} direction="up">
             <div
-              key={index}
-              className="glass rounded-xl p-6 transition-all duration-300 card-glow hover:bg-white/[0.06] group cursor-default relative overflow-hidden"
+              className="glass rounded-xl p-6 transition-all duration-300 card-glow hover:bg-white/[0.06] group cursor-default relative overflow-hidden h-full"
             >
               {/* Subtle gradient bg on hover */}
               <div
@@ -123,6 +125,7 @@ export function UseCases() {
                 </span>
               </div>
             </div>
+            </FadeIn>
           ))}
         </div>
       </div>

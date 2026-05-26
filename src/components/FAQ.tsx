@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { FadeIn } from '@/components/FadeIn';
 
 export function FAQ() {
   const faqs = [
@@ -49,7 +50,7 @@ export function FAQ() {
 
       <div className="max-w-3xl mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
+        <FadeIn direction="up" className="text-center mb-16">
           <p className="text-accent-secondary font-mono text-sm tracking-wider mb-4 opacity-70">
             // PREGUNTAS FRECUENTES
           </p>
@@ -57,13 +58,13 @@ export function FAQ() {
             <span className="gradient-text">FAQ</span>
           </h2>
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-accent-primary to-transparent mx-auto" />
-        </div>
+        </FadeIn>
 
         {/* FAQ accordion */}
         <div className="space-y-3">
           {faqs.map((faq, index) => (
+            <FadeIn key={index} delay={index * 80} direction="up">
             <div
-              key={index}
               className={`glass rounded-xl overflow-hidden transition-all duration-300 ${
                 openIndex === index ? 'bg-white/[0.06]' : 'hover:bg-white/[0.04]'
               }`}
@@ -92,6 +93,7 @@ export function FAQ() {
                 </div>
               </div>
             </div>
+            </FadeIn>
           ))}
         </div>
       </div>

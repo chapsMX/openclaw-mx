@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from "next/link";
 import { PLAN_PRICING, type PlanType } from '@/lib/types';
 import { trackBeginCheckout } from '@/lib/analytics';
+import { FadeIn } from '@/components/FadeIn';
 
 interface Inventory {
   plan_type: string;
@@ -107,7 +108,7 @@ export function Plans() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-20">
+        <FadeIn direction="up" className="text-center mb-20">
           <p className="text-accent-secondary font-mono text-sm tracking-wider mb-4 opacity-70">
             // PLANES DE INSTALACIÓN
           </p>
@@ -118,7 +119,7 @@ export function Plans() {
           OpenClaw en menos de 60 segundos.
           Nosotros nos encargamos de todo: Servidores, docker, dependencias, archivos de configuración, skills, etc.</p>
           <div className="w-24 h-px bg-gradient-to-r from-transparent via-accent-primary to-transparent mx-auto mt-8" />
-        </div>
+        </FadeIn>
 
         {/* Plans grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
@@ -127,8 +128,8 @@ export function Plans() {
             const soldOut = plan.showInventory && available !== null && available <= 0;
 
             return (
+              <FadeIn key={index} delay={index * 120} direction="up">
               <div
-                key={index}
                 className={`relative rounded-2xl p-8 transition-all duration-300 ${
                   plan.popular
                     ? 'card-glow'
@@ -275,6 +276,7 @@ export function Plans() {
                   )}
                 </div>
               </div>
+              </FadeIn>
             );
           })}
         </div>

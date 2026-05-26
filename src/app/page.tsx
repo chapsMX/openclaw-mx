@@ -5,6 +5,8 @@ import { Plans } from "@/components/Plans";
 import { Features } from "@/components/Features";
 import { Video } from "@/components/Video";
 import { UseCases } from "@/components/UseCases";
+import { Testimonials } from "@/components/Testimonials";
+import { Comparison } from "@/components/Comparison";
 import { FAQ } from "@/components/FAQ";
 import { FinalLogo } from "@/components/FinalLogo";
 import { Footer } from "@/components/Footer";
@@ -21,6 +23,8 @@ export default function Home() {
       <Features />
       <Video />
       <UseCases />
+      <Testimonials />
+      <Comparison />
       <FAQ />
       <FinalLogo />
       <Footer />
